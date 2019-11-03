@@ -138,8 +138,18 @@ final class Indabug {
 			return;
 		}
 
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ) );
+
 		// Load translated strings for plugin.
 		load_plugin_textdomain( 'indabug', false, dirname( $this->basename ) . '/languages/' );
+
+		add_action(
+			'wp_print_footer_scripts',
+			function () {
+				echo wp_kses( $this->debugbar->getJavascriptRenderer()->render(), array( 'script' => array() ) );
+			},
+			1000
+		);
 
 		// Initialize plugin classes.
 		$this->plugin_classes();
@@ -241,5 +251,40 @@ final class Indabug {
 			default:
 				throw new \Exception( 'Invalid ' . __CLASS__ . ' property: ' . $id );
 		}
+	}
+
+	/**
+	 * Enqueue assets.
+	 */
+	public function enqueue_assets() {
+		wp_enqueue_style(
+			'wpseed-indabug-debugbar',
+			WPSEED_INDABUG_URL . 'assets/vendor/debugbar.css',
+			array(),
+			WPSEED_INDABUG_VERSION
+		);
+
+		wp_enqueue_style(
+			'wpseed-indabug-widgets',
+			WPSEED_INDABUG_URL . 'assets/vendor/widgets.css',
+			array(),
+			WPSEED_INDABUG_VERSION
+		);
+
+		wp_enqueue_script(
+			'wpseed-indabug-debugbar',
+			WPSEED_INDABUG_URL . 'assets/vendor/debugbar.js',
+			array(),
+			WPSEED_INDABUG_VERSION,
+			true
+		);
+
+		wp_enqueue_script(
+			'wpseed-indabug-widgets',
+			WPSEED_INDABUG_URL . 'assets/vendor/widgets.js',
+			array(),
+			WPSEED_INDABUG_VERSION,
+			true
+		);
 	}
 }
