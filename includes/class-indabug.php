@@ -26,7 +26,7 @@ final class Indabug {
 	 * Plugin basename.
 	 *
 	 * @var    string
-	 * @since  0.0.0
+	 * @since  1.0.0
 	 */
 	protected $basename = '';
 
