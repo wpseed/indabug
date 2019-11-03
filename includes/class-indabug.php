@@ -138,12 +138,11 @@ final class Indabug {
 			return;
 		}
 
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ) );
-
 		// Load translated strings for plugin.
 		load_plugin_textdomain( 'indabug', false, dirname( $this->basename ) . '/languages/' );
 
 		if ( $this->should_display_toolbar() ) {
+			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ) );
 			add_action(
 				'wp_print_footer_scripts',
 				function () {
