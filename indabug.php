@@ -8,12 +8,12 @@
  * that starts the plugin.
  *
  * Plugin Name: Indabug
- * Plugin URI:  https://wpseed.io/
+ * Plugin URI:  https://github.com/wpseed/indabug
  * Description: Debug Console for WordPress.
  * Version:     1.0.0
  * Author:      WP Seed
  * Author URI:  https://wpseed.io/
- * Donate link: https://wpseed.io/
+ * Donate link: https://wpseed.io/donate/
  * License:     GPLv2
  *
  * Text Domain: indabug
