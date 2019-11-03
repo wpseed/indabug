@@ -1,9 +1,14 @@
 <?php
+/**
+ * Indabug class file
+ *
+ * @package Indabug
+ */
 
 namespace Wpseed\Indabug;
 
 /**
- * Main initiation class.
+ * Main initiation plugin class.
  *
  * @since  1.0.0
  */
@@ -66,7 +71,7 @@ final class Indabug {
 	 * @since  1.0.0
 	 */
 	public function plugin_classes() {
-		// $this->plugin_class = new Plugin_Class( $this );
+
 	}
 
 	/**
@@ -101,7 +106,7 @@ final class Indabug {
 	 *
 	 * @since  1.0.0
 	 */
-	public function _activate() {
+	public function activate() {
 		// Bail early if requirements aren't met.
 		if ( ! $this->check_requirements() ) {
 			return;
@@ -117,7 +122,7 @@ final class Indabug {
 	 *
 	 * @since  1.0.0
 	 */
-	public function _deactivate() {
+	public function deactivate() {
 		// Add deactivation cleanup functionality here.
 	}
 
@@ -146,7 +151,6 @@ final class Indabug {
 	 *
 	 * @return boolean True if requirements met, false if not.
 	 * @since  1.0.0
-	 *
 	 */
 	public function check_requirements() {
 
@@ -159,7 +163,7 @@ final class Indabug {
 		add_action( 'all_admin_notices', array( $this, 'requirements_not_met_notice' ) );
 
 		// Deactivate our plugin.
-		add_action( 'admin_init', array( $this, 'deactivate' ) );
+		add_action( 'admin_init', array( $this, 'deactivate_me' ) );
 
 		// Didn't meet the requirements.
 		return false;
@@ -170,7 +174,7 @@ final class Indabug {
 	 *
 	 * @since  1.0.0
 	 */
-	public function deactivate() {
+	public function deactivate_me() {
 
 		// We do a check for deactivate_plugins before calling it, to protect
 		// any developers from accidentally calling it too early and breaking things.
@@ -184,7 +188,6 @@ final class Indabug {
 	 *
 	 * @return boolean True if requirements are met.
 	 * @since  1.0.0
-	 *
 	 */
 	public function meets_requirements() {
 		if ( version_compare( WPSEED_INDABUG_MIN_PHP_VERSION, phpversion(), '>' ) ) {
@@ -201,7 +204,7 @@ final class Indabug {
 	 */
 	public function requirements_not_met_notice() {
 
-		// Compile default message.
+		/* translators: 1: Admin Url */
 		$default_message = sprintf( __( 'Indabug is missing requirements and has been <a href="%s">deactivated</a>. Please make sure all requirements are available.', 'indabug' ), admin_url( 'plugins.php' ) );
 
 		// Default details to null.
@@ -224,12 +227,11 @@ final class Indabug {
 	/**
 	 * Magic getter for our object.
 	 *
-	 * @param string $field Field to get.
+	 * @param string $id Property to get.
 	 *
 	 * @return mixed         Value of the field.
-	 * @throws \Exception     Throws an exception if the field is invalid.
+	 * @throws \Exception     Throws an exception if the property is invalid.
 	 * @since  1.0.0
-	 *
 	 */
 	public function get( $id ) {
 		switch ( $id ) {

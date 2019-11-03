@@ -72,5 +72,5 @@ function indabug() {
 add_action( 'plugins_loaded', array( indabug(), 'hooks' ) );
 
 // Activation and deactivation.
-register_activation_hook( __FILE__, array( indabug(), '_activate' ) );
-register_deactivation_hook( __FILE__, array( indabug(), '_deactivate' ) );
+register_activation_hook( __FILE__, array( indabug(), 'activate' ) );
+register_deactivation_hook( __FILE__, array( indabug(), 'deactivate' ) );
