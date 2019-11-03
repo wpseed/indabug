@@ -143,13 +143,15 @@ final class Indabug {
 		// Load translated strings for plugin.
 		load_plugin_textdomain( 'indabug', false, dirname( $this->basename ) . '/languages/' );
 
-		add_action(
-			'wp_print_footer_scripts',
-			function () {
-				echo wp_kses( $this->debugbar->getJavascriptRenderer()->render(), array( 'script' => array() ) );
-			},
-			1000
-		);
+		if ( $this->should_display_toolbar() ) {
+			add_action(
+				'wp_print_footer_scripts',
+				function () {
+					echo wp_kses( $this->debugbar->getJavascriptRenderer()->render(), array( 'script' => array() ) );
+				},
+				1000
+			);
+		}
 
 		// Initialize plugin classes.
 		$this->plugin_classes();
@@ -232,6 +234,20 @@ final class Indabug {
 			<?php echo wp_kses_post( $details ); ?>
 		</div>
 		<?php
+	}
+
+	/**
+	 * Check of toolbar display.
+	 *
+	 * @return boolean True if toolbar must be shown.
+	 * @since  1.0.0
+	 */
+	public function should_display_toolbar() {
+		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+			return true;
+		}
+
+		return get_current_user_id() && ( current_user_can( 'administrator' ) || is_super_admin( get_current_user_id() ) );
 	}
 
 	/**
