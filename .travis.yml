@@ -1,0 +1,49 @@
+sudo: false
+
+language: php
+
+notifications:
+  email:
+    on_success: never
+    on_failure: change
+
+matrix:
+  fast_finish: true
+  include:
+  - php: '5.6'
+    env:
+    - DEV="--no-dev" DIST=1
+
+cache:
+  directories:
+  - vendor
+  - "$HOME/.composer/cache"
+  - node_modules
+
+before_script:
+  - phpenv rehash
+  - composer install $DEV
+  - mkdir tools
+  - wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -P $(pwd)/tools/
+  - chmod +x tools/wp-cli.phar && mv tools/wp-cli.phar tools/wp
+  - export PATH=$PATH:$(pwd)/tools
+  - wp package install wp-cli/dist-archive-command
+
+script:
+  - if [[ "$SNIFF" == "1" ]]; then vendor/bin/phpcs -p -s --colors --standard=phpcs.xml .; fi
+
+before_deploy:
+  - cd .. && wp dist-archive indabug indabug.zip
+  - dir
+
+deploy:
+  provider: releases
+  api_key:
+    secure: $GITHUB_RELEASES_API_KEY
+  file: "/home/travis/build/wpseed/indabug.zip"
+  skip_cleanup: true
+  on:
+    repo: wpseed/indabug
+    branch: master
+    tags: true
+    condition: $DIST = 1
