@@ -271,10 +271,14 @@ final class Indabug {
 			WPSEED_INDABUG_VERSION
 		);
 
+		if ( ! wp_script_is( 'jquery', 'enqueued' ) ) {
+			wp_enqueue_script( 'jquery' );
+		}
+
 		wp_enqueue_script(
 			'wpseed-indabug-debugbar',
 			WPSEED_INDABUG_URL . 'assets/vendor/debugbar.js',
-			array(),
+			array( 'jquery' ),
 			WPSEED_INDABUG_VERSION,
 			true
 		);
@@ -282,7 +286,7 @@ final class Indabug {
 		wp_enqueue_script(
 			'wpseed-indabug-widgets',
 			WPSEED_INDABUG_URL . 'assets/vendor/widgets.js',
-			array(),
+			array( 'jquery' ),
 			WPSEED_INDABUG_VERSION,
 			true
 		);
