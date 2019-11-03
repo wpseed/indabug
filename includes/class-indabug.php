@@ -39,6 +39,14 @@ final class Indabug {
 	protected $url = '';
 
 	/**
+	 * Debug Bar instance.
+	 *
+	 * @var Debug_Bar
+	 * @since  1.0.0
+	 */
+	protected $debugbar;
+
+	/**
 	 * Detailed activation error messages.
 	 *
 	 * @var    array
@@ -305,5 +313,16 @@ final class Indabug {
 			WPSEED_INDABUG_VERSION,
 			true
 		);
+	}
+
+	/**
+	 * Push debug message to toolbar.
+	 *
+	 * @param string $message Debug message.
+	 *
+	 * @return mixed
+	 */
+	public function debug( $message ) {
+		return $this->debugbar['messages']->debug( $message );
 	}
 }
