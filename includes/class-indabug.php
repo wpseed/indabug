@@ -71,7 +71,7 @@ final class Indabug {
 	 * @since  1.0.0
 	 */
 	public function plugin_classes() {
-
+		$this->debugbar = new Debug_Bar();
 	}
 
 	/**

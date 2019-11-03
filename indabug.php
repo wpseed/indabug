@@ -27,8 +27,7 @@
 
 /**
  * Currently plugin version.
- * Start at version 1.0.0 and use SemVer - https://semver.org
- * Rename this for your plugin and update it as you release new versions.
+ * Starts at version 1.0.0 and uses SemVer - https://semver.org
  */
 define( 'WPSEED_INDABUG_VERSION', '1.0.0' );
 
