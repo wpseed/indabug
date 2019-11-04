@@ -12,7 +12,7 @@ namespace Wpseed\Indabug;
  *
  * @since  1.0.0
  */
-final class Indabug {
+final class Indabug implements Plugin {
 
 	/**
 	 * Path of plugin directory.
