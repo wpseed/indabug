@@ -1,3 +1,3 @@
-<p><img src="https://raw.githubusercontent.com/wpseed/indabug/develop/assets-repo/banner-772x250.png" width="100%"></p>
+<p align="center"><a><img src="https://raw.githubusercontent.com/wpseed/indabug/develop/assets-repo/banner-772x250.png" width="772"></a></p>
 
 # Indabug
