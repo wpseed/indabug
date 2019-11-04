@@ -271,6 +271,8 @@ final class Indabug {
 			case 'path':
 			case 'url':
 				return $this->$id;
+			case 'debugbar':
+				return $this->debugbar;
 			default:
 				throw new \Exception( 'Invalid ' . __CLASS__ . ' property: ' . $id );
 		}
@@ -281,15 +283,29 @@ final class Indabug {
 	 */
 	public function enqueue_assets() {
 		wp_enqueue_style(
+			'wpseed-indabug-font-awesome-min',
+			WPSEED_INDABUG_URL . 'assets/vendor/font-awesome/css/font-awesome.min.css',
+			array(),
+			WPSEED_INDABUG_VERSION
+		);
+
+		wp_enqueue_style(
+			'wpseed-indabug-highlightjs',
+			WPSEED_INDABUG_URL . 'assets/vendor/highlightjs/css/github.css',
+			array(),
+			WPSEED_INDABUG_VERSION
+		);
+
+		wp_enqueue_style(
 			'wpseed-indabug-debugbar',
-			WPSEED_INDABUG_URL . 'assets/vendor/debugbar.css',
+			WPSEED_INDABUG_URL . 'assets/vendor/debugbar/css/debugbar.css',
 			array(),
 			WPSEED_INDABUG_VERSION
 		);
 
 		wp_enqueue_style(
 			'wpseed-indabug-widgets',
-			WPSEED_INDABUG_URL . 'assets/vendor/widgets.css',
+			WPSEED_INDABUG_URL . 'assets/vendor/debugbar/css/widgets.css',
 			array(),
 			WPSEED_INDABUG_VERSION
 		);
@@ -299,8 +315,16 @@ final class Indabug {
 		}
 
 		wp_enqueue_script(
+			'wpseed-indabug-highlightjs',
+			WPSEED_INDABUG_URL . 'assets/vendor/highlightjs/js/highlight.pack.js',
+			array( 'jquery' ),
+			WPSEED_INDABUG_VERSION,
+			true
+		);
+
+		wp_enqueue_script(
 			'wpseed-indabug-debugbar',
-			WPSEED_INDABUG_URL . 'assets/vendor/debugbar.js',
+			WPSEED_INDABUG_URL . 'assets/vendor/debugbar/js/debugbar.js',
 			array( 'jquery' ),
 			WPSEED_INDABUG_VERSION,
 			true
@@ -308,7 +332,7 @@ final class Indabug {
 
 		wp_enqueue_script(
 			'wpseed-indabug-widgets',
-			WPSEED_INDABUG_URL . 'assets/vendor/widgets.js',
+			WPSEED_INDABUG_URL . 'assets/vendor/debugbar/js/widgets.js',
 			array( 'jquery' ),
 			WPSEED_INDABUG_VERSION,
 			true
