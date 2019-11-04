@@ -34,6 +34,7 @@ node_modules
 *.tar.gz
 *.zip
 assets-src
+assets-repo
 mix-manifest.json
 webpack.mix.js
 tools
