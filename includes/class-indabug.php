@@ -7,12 +7,14 @@
 
 namespace Wpseed\Indabug;
 
+use Psr\Container\ContainerInterface;
+
 /**
  * Main initiation plugin class.
  *
  * @since  1.0.0
  */
-final class Indabug implements Plugin {
+final class Indabug implements Plugin, ContainerInterface {
 
 	/**
 	 * Path of plugin directory.
@@ -55,12 +57,12 @@ final class Indabug implements Plugin {
 	protected $activation_errors = array();
 
 	/**
-	 * Singleton instance of plugin.
+	 * Instance of plugin.
 	 *
 	 * @var    Indabug
 	 * @since  1.0.0
 	 */
-	protected static $single_instance = null;
+	protected static $instance = null;
 
 	/**
 	 * Sets up our plugin.
@@ -89,11 +91,10 @@ final class Indabug implements Plugin {
 	 * @since   1.0.0
 	 */
 	public static function get_instance() {
-		if ( null === self::$single_instance ) {
-			self::$single_instance = new self();
+		if ( ! static::$instance ) {
+			static::$instance = new static();
 		}
-
-		return self::$single_instance;
+		return static::$instance;
 	}
 
 	/**
@@ -276,6 +277,17 @@ final class Indabug implements Plugin {
 			default:
 				throw new \Exception( 'Invalid ' . __CLASS__ . ' property: ' . $id );
 		}
+	}
+
+	/**
+	 * Has method.
+	 *
+	 * @param string $id Property to has.
+	 *
+	 * @return bool|void
+	 */
+	public function has( $id ) {
+
 	}
 
 	/**
