@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d50644280c644b5121d2012f31f4e0fa",
+    "content-hash": "2d2fadcd9ef4d78d1e144b824d4cfbf6",
     "packages": [
         {
             "name": "maximebf/debugbar",
@@ -175,16 +175,16 @@
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v3.4.33",
+            "version": "v3.4.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "569e261461600810845a8305ca3f64abd3e712c0"
+                "reference": "ca5fef348a0440411bbca0f9ec14e9a11625bd6a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/569e261461600810845a8305ca3f64abd3e712c0",
-                "reference": "569e261461600810845a8305ca3f64abd3e712c0",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/ca5fef348a0440411bbca0f9ec14e9a11625bd6a",
+                "reference": "ca5fef348a0440411bbca0f9ec14e9a11625bd6a",
                 "shasum": ""
             },
             "require": {
@@ -240,7 +240,7 @@
                 "debug",
                 "dump"
             ],
-            "time": "2019-10-10T11:03:19+00:00"
+            "time": "2019-05-01T09:52:10+00:00"
         }
     ],
     "packages-dev": [],

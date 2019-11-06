@@ -14,7 +14,8 @@
     }
   },
   "require": {
-    "maximebf/debugbar": "^1.15"
+    "maximebf/debugbar": "^1.15",
+    "symfony/var-dumper": "3.4.28"
   },
   "autoload": {
     "classmap": [
