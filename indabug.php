@@ -71,10 +71,10 @@ function indabug() {
  * Dump $message to DebugBar.
  *
  * @since  1.0.0
- * @param $message
+ * @param mixed $message Message for dump.
  */
-function ddd($message) {
-	indabug()->debug($message);
+function ddd( $message ) {
+	indabug()->debug( $message );
 }
 
 // Kick it off.

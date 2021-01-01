@@ -155,7 +155,7 @@ final class Indabug implements Plugin, ContainerInterface {
 			add_action(
 				'wp_print_footer_scripts',
 				function () {
-					echo $this->debugbar->getJavascriptRenderer()->render();
+					echo $this->debugbar->getJavascriptRenderer()->render(); // phpcs:ignore
 				},
 				1000
 			);
@@ -361,7 +361,7 @@ final class Indabug implements Plugin, ContainerInterface {
 	/**
 	 * Push debug message to toolbar.
 	 *
-	 * @param $message Debug message.
+	 * @param mixed $message Message for debug.
 	 *
 	 * @return mixed
 	 */
