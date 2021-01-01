@@ -155,7 +155,7 @@ final class Indabug implements Plugin, ContainerInterface {
 			add_action(
 				'wp_print_footer_scripts',
 				function () {
-					echo wp_kses( $this->debugbar->getJavascriptRenderer()->render(), array( 'script' => array() ) );
+					echo $this->debugbar->getJavascriptRenderer()->render();
 				},
 				1000
 			);
