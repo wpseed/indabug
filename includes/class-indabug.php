@@ -324,7 +324,7 @@ final class Indabug implements Plugin, ContainerInterface {
 
 		wp_enqueue_style(
 			'wpseed-indabug-main',
-			WPSEED_INDABUG_URL . 'assets/indabug.css',
+			WPSEED_INDABUG_URL . 'assets/styles/indabug.css',
 			array(),
 			WPSEED_INDABUG_VERSION
 		);
