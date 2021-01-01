@@ -67,6 +67,16 @@ function indabug() {
 	return \Wpseed\Indabug\Indabug::get_instance();
 }
 
+/**
+ * Dump $message to DebugBar.
+ *
+ * @since  1.0.0
+ * @param $message
+ */
+function ddd($message) {
+	indabug()->debug($message);
+}
+
 // Kick it off.
 add_action( 'plugins_loaded', array( indabug(), 'hooks' ) );
 

@@ -354,7 +354,7 @@ final class Indabug implements Plugin, ContainerInterface {
 	/**
 	 * Push debug message to toolbar.
 	 *
-	 * @param string $message Debug message.
+	 * @param $message Debug message.
 	 *
 	 * @return mixed
 	 */
